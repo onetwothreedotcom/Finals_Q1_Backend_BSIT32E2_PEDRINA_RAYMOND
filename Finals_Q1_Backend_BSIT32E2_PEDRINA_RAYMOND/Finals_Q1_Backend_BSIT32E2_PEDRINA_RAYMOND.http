@@ -1,0 +1,6 @@
+@Finals_Q1_Backend_BSIT32E2_PEDRINA_RAYMOND_HostAddress = http://localhost:5038
+
+GET {{Finals_Q1_Backend_BSIT32E2_PEDRINA_RAYMOND_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
