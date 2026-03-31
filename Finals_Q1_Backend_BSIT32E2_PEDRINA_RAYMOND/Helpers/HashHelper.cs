@@ -1,8 +1,8 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using Finals_Q1_Backend_BSIT32E2_PEDRINA_RAYMOND.Models;
+using TodoApi.Models;
 
-namespace Finals_Q1_Backend_BSIT32E2_PEDRINA_RAYMOND.Helpers
+namespace TodoApi.Helpers
 {
     public static class HashHelper
     {
@@ -25,6 +25,13 @@ namespace Finals_Q1_Backend_BSIT32E2_PEDRINA_RAYMOND.Helpers
             var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(rawData));
 
             return Convert.ToHexString(bytes);
+        }
+
+        public static bool IsValidProof(string title, int nonce, string proof)
+        {
+            var computed = ComputeProof(title, nonce);
+            return computed.Equals(proof, StringComparison.OrdinalIgnoreCase)
+                   && computed.StartsWith("00", StringComparison.OrdinalIgnoreCase);
         }
     }
 }
