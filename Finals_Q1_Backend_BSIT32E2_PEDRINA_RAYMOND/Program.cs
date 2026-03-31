@@ -1,6 +1,12 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+using System.Text.Json;
 
-builder.Services.AddControllers();
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
